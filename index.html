@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VitaVita · ร้านวิตามินและอาหารเสริม</title>
+<meta name="description" content="วิตามิน แร่ธาตุ โอเมก้า-3 โปรตีน และอาหารเสริมคุณภาพ ส่งฟรีเมื่อซื้อครบ 1,000 บาท">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;600;700&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12332c;--muted:#5f7670;--bg:#f7faf5;--card:#fff;--line:#dfe8dd;--lime:#d4ec7a;--orange:#ff8a1f;--green:#1d7a5f;--r:18px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Sarabun,system-ui,sans-serif}
+h1,h2,h3,.logo,button,.price{font-family:Prompt,Sarabun,sans-serif}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 18px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+header{position:sticky;top:0;z-index:10;background:rgba(247,250,245,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:14px;height:64px}
+.logo{font-weight:700;font-size:22px;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo i{width:30px;height:16px;border-radius:99px;background:linear-gradient(90deg,var(--orange) 50%,var(--lime) 50%);transform:rotate(-35deg);display:inline-block}
+.search{flex:1;max-width:380px;margin-left:auto}
+.search input{width:100%;padding:9px 16px;border:1px solid var(--line);border-radius:99px;font:inherit;background:#fff}
+.cartbtn{border:0;background:var(--ink);color:#fff;padding:9px 18px;border-radius:99px;font-size:15px;font-weight:500;cursor:pointer;white-space:nowrap}
+.cartbtn b{background:var(--orange);color:#fff;border-radius:99px;padding:0 8px;margin-left:6px}
+.hero{padding:44px 0 28px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.hero h1{font-size:clamp(30px,5vw,52px);line-height:1.2;margin:0 0 14px;font-weight:700}
+.hero p{color:var(--muted);font-size:18px;margin:0 0 22px;max-width:46ch}
+.btn{display:inline-block;background:var(--orange);color:#fff;border:0;border-radius:99px;padding:12px 26px;font-size:16px;font-weight:600;text-decoration:none;cursor:pointer}
+.perks{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;color:var(--muted);font-size:14px}
+.pills{position:relative;height:290px}
+.pill{position:absolute;border-radius:99px;box-shadow:0 10px 24px rgba(18,51,44,.15)}
+.p1{width:230px;height:92px;left:10%;top:18%;background:linear-gradient(90deg,var(--orange) 50%,#ffc46b 50%);transform:rotate(-24deg)}
+.p2{width:190px;height:76px;right:6%;top:46%;background:linear-gradient(90deg,var(--green) 50%,var(--lime) 50%);transform:rotate(18deg)}
+.p3{width:120px;height:120px;left:30%;bottom:2%;background:radial-gradient(circle at 35% 30%,#fff3b0,#ffc83d 70%)}
+.cats{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 22px}
+.cats button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:99px;padding:6px 16px;font-size:14px;cursor:pointer}
+.cats button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.sec-h{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.sec-h h2{font-size:26px;margin:0 0 10px}
+.sec-h span{color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:18px;margin-bottom:48px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.shelf{height:170px;display:grid;place-items:center;position:relative;background:color-mix(in srgb,var(--c) 14%,#fff)}
+.bottle{width:70px;height:110px;background:var(--c);border-radius:12px 12px 16px 16px;position:relative;margin-top:18px;box-shadow:inset -10px 0 0 rgba(0,0,0,.08)}
+.bottle:before{content:"";position:absolute;left:12px;right:12px;top:-16px;height:18px;background:var(--ink);border-radius:5px 5px 0 0}
+.bottle span{position:absolute;left:8px;right:8px;top:30px;height:50px;background:#fff;border-radius:8px;display:grid;place-items:center;font-size:24px}
+.tag{position:absolute;top:10px;left:10px;font-size:12px;font-weight:600;padding:2px 10px;border-radius:99px;background:#fff;color:var(--ink)}
+.tag.low{background:#fff1d6;color:#8a5200}.tag.out{background:#ffe3df;color:#a02a1c}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:13px;color:var(--muted)}
+.item h3{font-size:16px;margin:2px 0 4px;line-height:1.35}
+.desc{font-size:14px;color:var(--muted);margin:0 0 12px;flex:1}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.price{font-size:20px;font-weight:600}
+.add{border:0;background:var(--green);color:#fff;border-radius:99px;padding:8px 16px;font-size:14px;font-weight:500;cursor:pointer}
+.add:disabled{background:#cfd8d3;cursor:not-allowed}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 0}
+.why{background:var(--ink);color:#fff;padding:44px 0;margin-top:8px}
+.why .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.why h3{margin:0 0 4px;font-size:18px;color:var(--lime)}
+.why p{margin:0;color:#c5d6d0;font-size:15px}
+footer{padding:26px 0;color:var(--muted);font-size:14px;text-align:center}
+.scrim{position:fixed;inset:0;background:rgba(18,51,44,.45);opacity:0;pointer-events:none;transition:opacity .2s;z-index:20}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:#fff;z-index:21;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column}
+body.open .scrim{opacity:1;pointer-events:auto}body.open .drawer{transform:none}
+.drawer header{position:static;background:none;backdrop-filter:none;padding:16px 18px;display:flex;justify-content:space-between;align-items:center}
+.drawer h2{margin:0;font-size:20px}
+.x{border:0;background:none;font-size:26px;cursor:pointer;color:var(--ink)}
+.lines{flex:1;overflow:auto;padding:0 18px}
+.line{display:grid;grid-template-columns:1fr auto;gap:4px 10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:99px}
+.qty button{border:0;background:none;width:30px;height:30px;font-size:17px;cursor:pointer;color:var(--ink)}
+.qty span{min-width:24px;text-align:center}
+.rm{border:0;background:none;color:#a02a1c;font-size:13px;cursor:pointer;padding:0}
+.sum{padding:16px 18px;border-top:1px solid var(--line);font-size:15px}
+.sum div{display:flex;justify-content:space-between;margin-bottom:4px}
+.sum .tot{font-family:Prompt,sans-serif;font-size:19px;font-weight:600;margin:8px 0 12px}
+.sum .btn{width:100%;text-align:center}
+.sum .btn:disabled{background:#cfd8d3;cursor:not-allowed}
+.hint{font-size:13px;color:var(--green)}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,80px);background:var(--ink);color:#fff;padding:10px 20px;border-radius:99px;font-size:14px;transition:transform .25s;z-index:30;max-width:92vw}
+.toast.show{transform:translate(-50%,0)}
+@media(max-width:760px){.hero .wrap,.why .wrap{grid-template-columns:1fr}.pills{display:none}.search{display:none}.cartbtn{margin-left:auto}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#"><i></i>VitaVita</a>
+    <label class="search"><input id="q" type="search" placeholder="ค้นหาสินค้า เช่น วิตามินซี" aria-label="ค้นหาสินค้า"></label>
+    <button class="cartbtn" id="open">🛒 ตะกร้า<b id="count">0</b></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>วิตามินที่ใช่<br>ดูแลตัวเองได้ทุกวัน</h1>
+      <p>รวมวิตามิน แร่ธาตุ โอเมก้า-3 และโปรตีนคุณภาพ เลือกตามเป้าหมายสุขภาพของคุณ</p>
+      <a class="btn" href="#shop">เลือกซื้อสินค้า</a>
+      <div class="perks"><span>🚚 ส่งฟรีเมื่อซื้อครบ ฿1,000</span><span>📦 แพ็กเรียบร้อย ส่งไว</span><span>✅ ตรวจวันหมดอายุทุกชิ้น</span></div>
+    </div>
+    <div class="pills" aria-hidden="true"><div class="pill p1"></div><div class="pill p2"></div><div class="pill p3"></div></div>
+  </div>
+</section>
+
+<main class="wrap" id="shop">
+  <div class="sec-h"><h2>สินค้าทั้งหมด</h2><span id="shown"></span></div>
+  <div class="cats" id="cats" role="group" aria-label="หมวดหมู่สินค้า"></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<section class="why">
+  <div class="wrap">
+    <div><h3>เลือกง่าย</h3><p>จัดหมวดตามเป้าหมาย ตั้งแต่ภูมิคุ้มกัน การนอน ไปจนถึงออกกำลังกาย</p></div>
+    <div><h3>ของพร้อมส่ง</h3><p>แสดงสต็อกจริง สินค้าใกล้หมดจะมีป้ายบอกให้เห็นชัด</p></div>
+    <div><h3>ส่งฟรีเมื่อครบ ฿1,000</h3><p>ต่ำกว่านั้นค่าส่งเพียง ฿50 ทั่วประเทศ</p></div>
+  </div>
+</section>
+
+<footer>© VitaVita · อาหารเสริมไม่ใช่ยา ไม่ได้มีไว้เพื่อรักษาโรค · <a href="admin.html">สำหรับเจ้าของร้าน</a></footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="ตะกร้าสินค้า" aria-hidden="true">
+  <header><h2>ตะกร้าสินค้า</h2><button class="x" id="close" aria-label="ปิดตะกร้า">×</button></header>
+  <div class="lines" id="lines"></div>
+  <div class="sum">
+    <div><span>ยอดสินค้า</span><span id="sub">฿0</span></div>
+    <div><span>ค่าจัดส่ง</span><span id="ship">฿0</span></div>
+    <div class="hint" id="hint"></div>
+    <div class="tot"><span>รวมทั้งหมด</span><span id="total">฿0</span></div>
+    <button class="btn" id="checkout">ชำระเงิน</button>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  const P = window.DASHBOARD_DATA.products;
+  const META = {
+    "วิตามิน":{c:"#ff9a1f",e:"🍊"},"แร่ธาตุ":{c:"#4f86e8",e:"💧"},"น้ำมันปลา/ไขมันดี":{c:"#16a9bd",e:"🐟"},
+    "โปรตีน/ฟิตเนส":{c:"#e5584f",e:"💪"},"ระบบย่อยอาหาร":{c:"#6cb33f",e:"🌱"},"ผิวพรรณ":{c:"#ec6a9f",e:"✨"},"นอนหลับ/ผ่อนคลาย":{c:"#7566e8",e:"🌙"}
+  };
+  const DESC = {
+    1:"เสริมภูมิคุ้มกัน ต้านอนุมูลอิสระ",2:"บำรุงกระดูก สำหรับคนไม่ค่อยโดนแดด",3:"ช่วยระบบพลังงานและระบบประสาท",
+    4:"ดูดซึมดี ช่วยผ่อนคลายกล้ามเนื้อ",5:"สนับสนุนภูมิคุ้มกันและผิวหนัง",6:"บำรุงกระดูกและฟัน ในเม็ดเดียว",
+    7:"โอเมก้า-3 เพื่อหัวใจและสมอง",8:"น้ำมันคริลล์ ดูดซึมดี ไม่มีกลิ่นคาว",9:"โปรตีนสูง สำหรับสร้างกล้ามเนื้อ",
+    10:"เพิ่มแรงและพลังระเบิดตอนออกกำลังกาย",11:"แอมิโนช่วยฟื้นฟูกล้ามเนื้อ รสส้ม",12:"จุลินทรีย์ดี ช่วยปรับสมดุลลำไส้",
+    13:"บำรุงผิวและข้อต่อ ละลายง่าย",14:"ช่วยให้หลับง่ายขึ้น ใช้ระยะสั้น",15:"สมุนไพรช่วยลดความเครียด",16:"วิตามินรวมครบจบในเม็ดเดียว"
+  };
+  const baht = n => "฿" + n.toLocaleString("th-TH");
+  const esc = s => String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const $ = id => document.getElementById(id);
+  let cat = "ทั้งหมด", term = "", cart = {};
+  try { cart = JSON.parse(localStorage.getItem("vv-cart")||"{}"); } catch(e){}
+  Object.keys(cart).forEach(id => { if(!P.find(p=>p.id==id)) delete cart[id]; });
+  const save = () => { try{ localStorage.setItem("vv-cart", JSON.stringify(cart)); }catch(e){} };
+
+  // หมวดหมู่
+  const cats = ["ทั้งหมด", ...new Set(P.map(p=>p.category))];
+  $("cats").innerHTML = cats.map(c=>`<button data-c="${esc(c)}" class="${c===cat?"on":""}">${esc(c)}</button>`).join("");
+  $("cats").onclick = e => { const b=e.target.closest("button"); if(!b) return; cat=b.dataset.c;
+    [...$("cats").children].forEach(x=>x.classList.toggle("on",x===b)); renderGrid(); };
+  $("q").oninput = e => { term = e.target.value.trim().toLowerCase(); renderGrid(); };
+
+  function renderGrid(){
+    const list = P.filter(p => (cat==="ทั้งหมด"||p.category===cat) && (p.name+p.category+(DESC[p.id]||"")).toLowerCase().includes(term));
+    $("shown").textContent = list.length + " รายการ";
+    $("grid").innerHTML = list.length ? list.map(p=>{
+      const m = META[p.category]||{c:"#1d7a5f",e:"💊"};
+      const out = p.stock===0, low = !out && p.stock<=p.low;
+      return `<article class="item">
+        <div class="shelf" style="--c:${m.c}"><div class="bottle"><span>${m.e}</span></div>
+          ${out?'<span class="tag out">สินค้าหมด</span>':low?`<span class="tag low">เหลือ ${p.stock} ชิ้น</span>`:""}</div>
+        <div class="body"><div class="cat">${esc(p.category)}</div><h3>${esc(p.name)}</h3>
+          <p class="desc">${esc(DESC[p.id]||"")}</p>
+          <div class="row"><span class="price">${baht(p.price)}</span>
+          <button class="add" data-id="${p.id}" ${out?"disabled":""}>${out?"หมดชั่วคราว":"ใส่ตะกร้า"}</button></div></div>
+      </article>`;}).join("") : `<div class="empty">ไม่พบสินค้าที่ตรงกับ “${esc(term)}” ลองค้นด้วยคำอื่นหรือเลือกหมวด “ทั้งหมด”</div>`;
+  }
+  $("grid").onclick = e => { const b=e.target.closest(".add"); if(b) add(+b.dataset.id); };
+
+  // ตะกร้า
+  function add(id){
+    const p = P.find(x=>x.id===id); const n = (cart[id]||0)+1;
+    if(n>p.stock){ toast("สั่งได้สูงสุด "+p.stock+" ชิ้นสำหรับสินค้านี้"); return; }
+    cart[id]=n; save(); renderCart(); toast("เพิ่ม “"+p.name+"” ในตะกร้าแล้ว");
+  }
+  function change(id,d){
+    const p = P.find(x=>x.id===id); const n=(cart[id]||0)+d;
+    if(n<=0) delete cart[id]; else if(n>p.stock){ toast("สั่งได้สูงสุด "+p.stock+" ชิ้น"); return; } else cart[id]=n;
+    save(); renderCart();
+  }
+  function renderCart(){
+    const ids = Object.keys(cart).map(Number);
+    const sub = ids.reduce((s,id)=>s+cart[id]*P.find(p=>p.id===id).price,0);
+    const ship = !ids.length ? 0 : sub>=1000 ? 0 : 50;
+    $("count").textContent = ids.reduce((s,id)=>s+cart[id],0);
+    $("lines").innerHTML = ids.length ? ids.map(id=>{ const p=P.find(x=>x.id===id);
+      return `<div class="line"><div>${esc(p.name)}<br><button class="rm" data-rm="${id}">ลบออก</button></div>
+        <div style="text-align:right"><b class="price" style="font-size:16px">${baht(p.price*cart[id])}</b><br>
+        <span class="qty"><button data-d="-1" data-id="${id}" aria-label="ลดจำนวน">−</button><span>${cart[id]}</span><button data-d="1" data-id="${id}" aria-label="เพิ่มจำนวน">+</button></span></div></div>`;
+    }).join("") : `<p class="empty" style="padding:40px 0">ตะกร้ายังว่างอยู่ เลือกสินค้าที่ชอบได้เลย</p>`;
+    $("sub").textContent = baht(sub);
+    $("ship").textContent = ship ? baht(ship) : (ids.length?"ฟรี":"฿0");
+    $("hint").textContent = ids.length && sub<1000 ? "ซื้ออีก "+baht(1000-sub)+" ส่งฟรี" : "";
+    $("total").textContent = baht(sub+ship);
+    $("checkout").disabled = !ids.length;
+  }
+  $("lines").onclick = e => {
+    const r=e.target.closest("[data-rm]"); if(r){ delete cart[r.dataset.rm]; save(); renderCart(); return; }
+    const b=e.target.closest("[data-d]"); if(b) change(+b.dataset.id,+b.dataset.d);
+  };
+  $("checkout").onclick = () => {
+    toast("นี่คือเว็บตัวอย่าง ยังไม่ได้เชื่อมระบบชำระเงินจริง");
+  };
+
+  // เปิด/ปิดตะกร้า
+  const setOpen = o => { document.body.classList.toggle("open",o); $("drawer").setAttribute("aria-hidden",!o); if(o) $("close").focus(); };
+  $("open").onclick = () => setOpen(true); $("close").onclick = () => setOpen(false); $("scrim").onclick = () => setOpen(false);
+  document.addEventListener("keydown", e => { if(e.key==="Escape") setOpen(false); });
+
+  let tt; function toast(msg){ const t=$("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove("show"),2400); }
+
+  renderGrid(); renderCart();
+})();
+</script>
+</body>
+</html>
